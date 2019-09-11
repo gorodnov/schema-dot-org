@@ -1,3 +1,5 @@
+require 'schema_dot_org'
+
 module SchemaDotOrg
   class ListItem < SchemaType
     attr_accessor :position,
