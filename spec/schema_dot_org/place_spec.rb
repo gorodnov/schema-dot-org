@@ -5,20 +5,20 @@ require 'schema_dot_org/place'
 
 
 RSpec.describe SchemaDotOrg::Place do # rubocop:disable Metrics/BlockLength
-  let(:home) { SchemaDotOrg::Place.new(address: 'Las Vegas, NV') }
+  let(:home) { described_class.new(address: 'Las Vegas, NV') }
 
   describe "#new" do
     it 'will not create a Place without an address' do
-      expect { SchemaDotOrg::Place.new }.to raise_error(ArgumentError)
+      expect { described_class.new }.to raise_error(ArgumentError)
     end
 
     it 'creates a Place when given an address string' do
-      expect { SchemaDotOrg::Place.new(address: 'NY, NY') }
+      expect { described_class.new(address: 'NY, NY') }
     end
 
     it 'will not create a Place with an unknown attribute' do
       expect do
-        Place.new(
+        described_class.new(
           address: '12345 Happy Street',
           author:  'Hemmingway'
         )

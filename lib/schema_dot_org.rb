@@ -46,7 +46,6 @@ module SchemaDotOrg
       { "@type" => un_namespaced_classname }.merge(_to_json_struct.compact)
     end
 
-
     def _to_json_struct
       raise "For subclasses to implement"
     end
@@ -58,6 +57,10 @@ module SchemaDotOrg
       Regexp.last_match(1)
     end
 
+    def safe_to_json(o)
+      return o.to_json_struct if o.respond_to?(:to_json_struct)
+      o.to_s
+    end
 
     private
 

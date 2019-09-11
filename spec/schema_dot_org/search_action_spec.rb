@@ -7,12 +7,12 @@ require 'schema_dot_org/search_action'
 RSpec.describe SchemaDotOrg::SearchAction do # rubocop:disable Metrics/BlockLength
   describe "#new" do
     it 'will not create a SearchAction without attributes' do
-      expect { SchemaDotOrg::SearchAction.new }.to raise_error(ArgumentError)
+      expect { described_class.new }.to raise_error(ArgumentError)
     end
 
     it 'creates a SearchAction when given a target and query input' do
       expect do
-        SchemaDotOrg::SearchAction.new(
+        described_class.new(
           target:      'https://www.oregonlaws.org/?search={search_term_string}',
           query_input: 'required name=search_term_string'
         )
@@ -23,7 +23,7 @@ RSpec.describe SchemaDotOrg::SearchAction do # rubocop:disable Metrics/BlockLeng
 
   describe "#to_json_struct" do
     it "has exactly the correct attributes and values" do
-      action = SchemaDotOrg::SearchAction.new(
+      action = described_class.new(
         target: 'https://www.oregonlaws.org/?search={search_term_string}',
         query_input: 'required name=search_term_string'
       )
