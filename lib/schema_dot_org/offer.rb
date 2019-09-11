@@ -6,13 +6,13 @@ module SchemaDotOrg
                   :price_currency,
                   :item_condition
 
-    validates :price,           type: Numeric,  presence: true
+    validates :price,           type: String,  presence: true
     validates :price_currency,  type: String,   presence: true
     validates :item_condition,  type: String
 
     def _to_json_struct
       {
-          'price' => price.to_s,
+          'price' => price,
           'priceCurrency' => price_currency,
           'itemCondition' => item_condition
       }
